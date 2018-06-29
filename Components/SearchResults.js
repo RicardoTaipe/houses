@@ -22,15 +22,22 @@ class ListItem extends React.PureComponent {
         onPress={this._onPress}
         underlayColor='#dddddd'>
         <View>
-          <View style={styles.rowContainer}>
-            <Image style={styles.thumb} source={{ uri: item.img_url }} />
+          <View style={styles.rowContainer} >
+            <View style={styles.imageContainer}>
+              <Image style={styles.thumb} source={{ uri: item.img_url }} />
+            </View>
             <View style={styles.textContainer}>
               <Text style={styles.price}>{price}</Text>
-              <Text style={styles.title}
-                numberOfLines={1}>{item.title}</Text>
+              <View style={styles.textFooter}>
+                <Image source={require('../assets/bed.png')} style={styles.icon}/>
+                <Text style={styles.title}>{item.bedroom_number}</Text>
+              </View>
+              <View style={styles.textFooter}>
+                <Image source={require('../assets/pin.png')} style={styles.icon} />
+                <Text style={styles.title} numberOfLines={1}>{item.title}</Text>
+              </View>
             </View>
           </View>
-          <View style={styles.separator}/>
         </View>
       </TouchableHighlight>
     );
@@ -70,28 +77,44 @@ export default class SearchResults extends Component {
 
 const styles = StyleSheet.create({
   thumb: {
-    width: 80,
-    height: 80,
-    marginRight: 10
+    flex: 1, aspectRatio: 1.3, resizeMode: 'contain',   
   },
   textContainer: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#ffffff',
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
-  separator: {
-    height: 1,
-    backgroundColor: '#dddddd'
+  imageContainer: {
+    flex:2,
+    flexDirection: 'row',    
+    marginTop : -5
   },
   price: {
-    fontSize: 25,
+    paddingLeft: 10,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: '#48BBEC'
+    color: '#3955dd'
   },
   title: {
+    paddingLeft: 10,
     fontSize: 20,
-    color: '#656565'
+    color: '#706969'
   },
   rowContainer: {
-    flexDirection: 'row',
-    padding: 10
+    flex: 1 ,
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    backgroundColor:'#ffffff'
   },
+  icon:{
+    width: 24,
+    height: 24  
+  },
+  textFooter:{
+    paddingLeft: 20,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  }
 });

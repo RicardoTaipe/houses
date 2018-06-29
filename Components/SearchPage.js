@@ -89,7 +89,7 @@ export default class SearchPage extends React.Component {
                     title='Go'/>          
             </View>
             <Image source={require('../assets/house.jpg')}
-                style={styles.image} res/>
+                style={styles.image} />
             { this.state.isLoading &&
                 <ActivityIndicator size='large' color='#383232'/>
             }
